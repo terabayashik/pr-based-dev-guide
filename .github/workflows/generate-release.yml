@@ -1,0 +1,28 @@
+name: Generate Release
+run-name: Generate Release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  release:
+    env:
+      PACKAGE_VERSION: null
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get package.json version
+        run: |
+          version=$(jq -r '.version' package.json)
+          echo "Package version is $version"
+          echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
+      - name: Generate Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.PACKAGE_VERSION }}
+          generate_release_notes: true
