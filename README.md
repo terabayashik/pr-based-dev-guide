@@ -1,5 +1,5 @@
 # pr-based-dev-guide
-PRベースにの開発をすることで以下を目指すためのガイド。`gh` ([GitHub CLI](https://cli.github.com/))の利用を想定する。
+PRベースの開発をすることで以下を目指すためのガイド。`gh` ([GitHub CLI](https://cli.github.com/))の利用を想定する。
 
 - [自動生成リリースノート](https://docs.github.com/ja/repositories/releasing-projects-on-github/automatically-generated-release-notes)
   - 本リポジトリではmainブランチへのPRがマージされた時にリリースが作成され、PRとそのPRに関連したIssueの内容からリリースノートが自動生成される。
